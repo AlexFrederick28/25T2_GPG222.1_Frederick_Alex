@@ -1,9 +1,22 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpaceshipMove : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
+
+    [SerializeField] private InputAction moveAction;
+
+    private void OnEnable()
+    {
+        moveAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+    }
 
     // this update is used for testing
     private void Update()
@@ -13,7 +26,14 @@ public class SpaceshipMove : MonoBehaviour
 
     private void MoveForward() // strictly used to move the spaceship forward using forces
     {
-        rb.AddRelativeForce(0, 0, speed, ForceMode.Acceleration);
+        if (moveAction.IsPressed())
+        {
+            rb.AddRelativeForce(0, 0, speed, ForceMode.Acceleration);
+        }
+        else
+        {
+            rb.AddRelativeForce(0, 0, 0, 0);
+        }
     }
 
 }
