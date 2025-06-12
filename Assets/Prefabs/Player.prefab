@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 4074437414904215808}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.496, z: -2.652}
+  m_LocalPosition: {x: 0, y: 1.496, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -464,25 +464,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555dca57c84ae59438effa3db49827b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseTurn: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0, z: 0}
   aimCamera: {fileID: 4868693867761436429}
   sensitivity: 0.1
-  lookAction:
-    m_Name: Look
+  lookActionX:
+    m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 0a9cd33f-e4c6-4129-8681-658f04bf1048
+    m_Id: 7e01d8dc-e920-473a-8bd2-e652dd207947
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: c08ebe02-9e09-448c-af62-342d0d3ed470
-      m_Path: <Mouse>/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 0
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  lookActionY:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 47175779-af32-4fa2-afc6-9b1f8b281469
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
     m_Flags: 0
 --- !u!114 &6640559886095636299
 MonoBehaviour:

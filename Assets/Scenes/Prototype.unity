@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a5cc8558d119f4dbe64b70e8fef107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 10
+  number: 20
   spawnOnStart: 1
   prefab: {fileID: 7461991672879972305, guid: e5d423e2ee02ef04d91ed125a642db85, type: 3}
 --- !u!1 &304010326
@@ -351,7 +351,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2d733901c02dd474ba9c97db3dd157a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -460,7 +460,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 60232397ded68c146aa043cf3b028891, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -693,7 +693,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2c7c9ee23aa4dbb4cbfb067b2e60b93e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -801,7 +801,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 60232397ded68c146aa043cf3b028891, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1023,6 +1023,82 @@ PrefabInstance:
       propertyPath: m_ImplicitTensor
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionX.m_Name
+      value: Look Action X
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionY.m_Name
+      value: Look Action Y
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionX.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionY.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 6042292a-2d59-42af-8b94-542fba49a4a3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: a3e8c0ef-a803-4f76-bc2c-dab8370352da
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 9b318e77-b0dd-4707-aa90-49e73bbd4768
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionX.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ae5b80dd-2ef2-45f8-905c-d07817810f8e
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionY.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 055dd005-90be-425f-b13c-1f8fcfae156d
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/delta/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Mouse>/delta/x
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.data[2].m_Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionX.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/delta/x
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionY.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/delta/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Look
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookAction.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Look
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionX.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Look Action X
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367298667694901217, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: lookActionY.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Look Action Y
+      objectReference: {fileID: 0}
     - target: {fileID: 4407009140338411488, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1070,6 +1146,34 @@ PrefabInstance:
     - target: {fileID: 4593829412344633919, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579955343153720573, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: moveAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579955343153720573, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: moveAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 59bf64bb-c769-4e81-b044-c32983efc41e
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579955343153720573, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: moveAction.m_SingletonActionBindings.Array.data[2].m_Id
+      value: de70e787-f21e-4f28-bed3-8f36cbfb6ca3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579955343153720573, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: moveAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Mouse>/delta/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579955343153720573, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: moveAction.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <Mouse>/delta/x
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579955343153720573, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: moveAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579955343153720573, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
+      propertyPath: moveAction.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Move
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1133,7 +1237,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2d733901c02dd474ba9c97db3dd157a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1241,7 +1345,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2c7c9ee23aa4dbb4cbfb067b2e60b93e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
