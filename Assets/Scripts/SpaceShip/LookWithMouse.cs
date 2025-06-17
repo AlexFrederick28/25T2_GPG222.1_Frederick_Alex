@@ -1,11 +1,12 @@
 using System.Threading;
 using TreeEditor;
+using Unity.Netcode;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class LookWithMouse : MonoBehaviour
+public class LookWithMouse : NetworkBehaviour
 {
     [SerializeField] private Vector2 mouseTurn;
     [SerializeField] private Vector3 mousePosition;

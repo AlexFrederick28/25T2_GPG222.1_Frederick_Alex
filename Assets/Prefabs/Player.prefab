@@ -433,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8818c8561892f4ebd9ff57d34404d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 112829674079986095}
   speed: 10
   moveAction:
@@ -464,12 +465,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555dca57c84ae59438effa3db49827b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   mouseTurn: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0, z: 0}
   aimCamera: {fileID: 4868693867761436429}
   sensitivity: 0.1
   lookActionX:
-    m_Name: 
+    m_Name: Look Action X
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 7e01d8dc-e920-473a-8bd2-e652dd207947
@@ -478,7 +480,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   lookActionY:
-    m_Name: 
+    m_Name: Look Action Y
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 47175779-af32-4fa2-afc6-9b1f8b281469

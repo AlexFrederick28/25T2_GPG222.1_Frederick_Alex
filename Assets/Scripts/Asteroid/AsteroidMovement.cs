@@ -1,7 +1,8 @@
 using System.Runtime.CompilerServices;
+using Unity.Netcode;
 using UnityEngine;
 
-public class AsteroidMovement : MonoBehaviour
+public class AsteroidMovement : NetworkBehaviour
 {
 
     [SerializeField] private Rigidbody rb;

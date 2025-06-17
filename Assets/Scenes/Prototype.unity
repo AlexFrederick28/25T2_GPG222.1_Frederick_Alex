@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a5cc8558d119f4dbe64b70e8fef107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   number: 20
   spawnOnStart: 1
   prefab: {fileID: 7461991672879972305, guid: e5d423e2ee02ef04d91ed125a642db85, type: 3}
@@ -595,7 +596,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 544654298}
-    PlayerPrefab: {fileID: 0}
+    PlayerPrefab: {fileID: 4263893754169014714, guid: 7926d62f514e57e4bae104350ed8d7ff, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: ae768a4914536d64f987ea40c8ea0304, type: 2}
@@ -1145,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4593829412344633919, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6579955343153720573, guid: f5238a4eb5f26e5469f873d1421df429, type: 3}
       propertyPath: moveAction.m_SingletonActionBindings.Array.size

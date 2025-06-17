@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class AsteroidSpawner : MonoBehaviour
+public class AsteroidSpawner : NetworkBehaviour
 {
     [SerializeField] private int number;
     [SerializeField] private bool spawnOnStart = true;
