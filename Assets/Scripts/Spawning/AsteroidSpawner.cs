@@ -9,10 +9,19 @@ public class AsteroidSpawner : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        Spawn();
+        if (IsServer)
+        {
+            Spawn_RPC();
+        }
+        if (IsLocalPlayer)
+        {
+            Spawn_RPC();
+            Debug.Log("spawned");
+        }
     }
 
-    public void Spawn()
+    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    public void Spawn_RPC()
     {
         if (spawnOnStart)
         {
@@ -21,9 +30,10 @@ public class AsteroidSpawner : NetworkBehaviour
                 float spawnX = Random.Range(transform.position.x + 50, transform.position.x - 50);
                 float spawnY = Random.Range(transform.position.y + 50, transform.position.y - 50);
                 float spawnZ = Random.Range(transform.position.z + 50, transform.position.z - 50);
-                Vector3 spawnPosition = new Vector3 (spawnX, spawnY, spawnZ);
+                Vector3 spawnPosition = new Vector3(spawnX, spawnY, spawnZ);
 
-                Instantiate(prefab, spawnPosition, Quaternion.identity);
+                GameObject newAsteroid = Instantiate(prefab, spawnPosition, Quaternion.identity);
+                newAsteroid.GetComponent<NetworkObject>().Spawn();
             }
         }
 

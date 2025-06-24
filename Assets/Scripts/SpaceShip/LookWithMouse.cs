@@ -10,59 +10,84 @@ public class LookWithMouse : NetworkBehaviour
 {
     [SerializeField] private Vector2 mouseTurn;
     [SerializeField] private Vector3 mousePosition;
+    [SerializeField] private Vector3 mouseView;
     [SerializeField] private Camera aimCamera;
     [SerializeField] private float sensitivity;
 
     [SerializeField] private InputAction lookActionX;
     [SerializeField] private InputAction lookActionY;
 
-    private void OnEnable()
+    public override void OnNetworkSpawn()
     {
+        if (IsOwner)
+        {
+            aimCamera.gameObject.SetActive(true);
+        }
+
         lookActionX.Enable();
         lookActionY.Enable();
+
+        base.OnNetworkSpawn();
     }
 
-    private void OnDisable()
+    public override void OnNetworkDespawn()
     {
         lookActionX.Disable();
         lookActionY.Disable();
+
+        base.OnNetworkDespawn();
     }
 
     private void FixedUpdate()
     {
-        CameraToMousePosition();
-        LockMouseToScreen();
+        if (IsLocalPlayer)
+        {
+            LockMouseToScreen();
+
+            if (lookActionX.IsPressed() || lookActionY.IsPressed())
+            {
+                Debug.Log("Rotating");
+                ReadMouseInputs();
+                SendControlsToServer_RPC(mouseView);
+            }
+        }
     }
 
-    private void CameraToMousePosition()
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
+    private void SyncRotation_Rpc(Vector3 _mouseView)
     {
+        transform.rotation = Quaternion.Euler(_mouseView);
+    }
 
-        
+    private void ReadMouseInputs()
+    {
+        mouseTurn.x += lookActionX.ReadValue<float>();
+        mouseTurn.y += lookActionY.ReadValue<float>();
+        //mousePosition = new Vector2(mouseTurn.x, mouseTurn.y); // shows values in inspector
 
         if (transform.up.y < 0)
         {
-            mouseTurn.x += lookActionX.ReadValue<float>();
-            mouseTurn.y += lookActionY.ReadValue<float>();
-            mousePosition = new Vector2(mouseTurn.x, mouseTurn.y); // shows values in inspector
-            Vector3 mouseView = new Vector3(-mouseTurn.y, -mouseTurn.x, 0);
-            transform.rotation = Quaternion.Euler(mouseView);
+            mouseView = new Vector3(-mouseTurn.y, -mouseTurn.x, 0);
         }
         else
         {
-            mouseTurn.x += lookActionX.ReadValue<float>();
-            mouseTurn.y += lookActionY.ReadValue<float>();
-            mousePosition = new Vector2(mouseTurn.x, mouseTurn.y); // shows values in inspector
-            Vector3 mouseView = new Vector3(-mouseTurn.y, mouseTurn.x, 0);
-            transform.rotation = Quaternion.Euler(mouseView);
+            mouseView = new Vector3(-mouseTurn.y, mouseTurn.x, 0);
         }
+    }
+
+    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    private void SendControlsToServer_RPC(Vector3 _mouseView)
+    {
+        SyncRotation_Rpc(_mouseView);
     }
 
     private void LockMouseToScreen()
     {
-        // undecided whether or not the mouse can actually be locked as the mouse needs to move to grab the position
-
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+
+
 
 
 
