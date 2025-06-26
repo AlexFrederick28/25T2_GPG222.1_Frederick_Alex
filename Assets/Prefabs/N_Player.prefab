@@ -119,12 +119,12 @@ GameObject:
   - component: {fileID: 778040747950850166}
   - component: {fileID: 8804979967663077812}
   - component: {fileID: -7548941593251154823}
+  - component: {fileID: 2281585596005063851}
   - component: {fileID: 5901029140181065862}
   - component: {fileID: 2011564265869600922}
   - component: {fileID: 3621751359148597746}
   - component: {fileID: -7062199250190762562}
   - component: {fileID: -1938522303814451803}
-  - component: {fileID: 2281585596005063851}
   m_Layer: 0
   m_Name: N_Player
   m_TagString: Untagged
@@ -203,6 +203,20 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &2281585596005063851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263893754169014714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216d92183a0ad294ea038d46fe35430b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  pilotMeshRenderer: {fileID: 5869514091821796337}
 --- !u!114 &5901029140181065862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +264,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   mouseTurn: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0, z: 0}
+  mouseView: {x: 0, y: 0, z: 0}
   aimCamera: {fileID: 2946081982663053589}
   sensitivity: 0.1
   lookActionX:
@@ -379,18 +394,6 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
---- !u!114 &2281585596005063851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4263893754169014714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 216d92183a0ad294ea038d46fe35430b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6154735627387106174
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +643,7 @@ GameObject:
   - component: {fileID: 5869514091821796337}
   - component: {fileID: 3023149391097835009}
   m_Layer: 0
-  m_Name: Person
+  m_Name: Pilot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

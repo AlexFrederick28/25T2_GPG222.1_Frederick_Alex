@@ -1,11 +1,13 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MultiplayerLobby : MonoBehaviour
+public class MultiplayerLobby : NetworkBehaviour
 {
-    [SerializeField] private List<GameObject> players;
+    [SerializeField] private List<GameObject> playersInLobby;
+    [SerializeField] private List<Color> playerColours;
 
     public static MultiplayerLobby instance;
 
@@ -13,25 +15,27 @@ public class MultiplayerLobby : MonoBehaviour
     public static SubscribePlayer playerJoin;
     public static SubscribePlayer playerLeave;
 
+    public Color GetPlayerColour(int colorID)
+    {
+        return playerColours[colorID];
+    }
+
     private void OnEnable()
     {
         instance = this;
 
         playerJoin += AddPlayerToList;
         playerLeave += RemovePlayerFromList;
-    }
-
-    private void FixedUpdate()
-    {
-       
+        
     }
 
     public void AddPlayerToList(GameObject player)
     {
-        players.Add(player);
+        playersInLobby.Add(player);
     }
     public void RemovePlayerFromList(GameObject player)
     {
-        players.Remove(player);
+        playersInLobby.Remove(player);
     }
+
 }
