@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  playerIndex: 0
   pilotMeshRenderer: {fileID: 5869514091821796337}
 --- !u!114 &5901029140181065862
 MonoBehaviour:
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 8804979967663077812}
-  speed: 10
+  speed: 50
   moveAction:
     m_Name: Move
     m_Type: 0
