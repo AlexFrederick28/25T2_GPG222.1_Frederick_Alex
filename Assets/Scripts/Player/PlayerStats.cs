@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerStats : NetworkBehaviour
 {
-    [SerializeField] private int playerIndex;
+    public int playerIndex;
     [SerializeField] private MeshRenderer pilotMeshRenderer;
     
     private Material material;
@@ -15,7 +15,7 @@ public class PlayerStats : NetworkBehaviour
         MultiplayerLobby.playerJoin.Invoke(gameObject);
 
         playerIndex = (int)OwnerClientId;
-        SetPilotColour(MultiplayerLobby.instance.GetPlayerColour(playerIndex));
+        SetPilotColour(MultiplayerLobby.instance.GetPlayerColour(playerIndex)); // setting the colour of the pilot using the player index in relation to the colour from the multiplayer lobby colour list
     }
 
     public override void OnNetworkDespawn()

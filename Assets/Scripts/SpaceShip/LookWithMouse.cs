@@ -19,6 +19,8 @@ public class LookWithMouse : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
+
         if (IsOwner)
         {
             aimCamera.gameObject.SetActive(true);
@@ -26,16 +28,14 @@ public class LookWithMouse : NetworkBehaviour
 
         lookActionX.Enable();
         lookActionY.Enable();
-
-        base.OnNetworkSpawn();
     }
 
     public override void OnNetworkDespawn()
     {
+        base.OnNetworkDespawn();
+
         lookActionX.Disable();
         lookActionY.Disable();
-
-        base.OnNetworkDespawn();
     }
 
     private void FixedUpdate()
@@ -53,7 +53,7 @@ public class LookWithMouse : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Unreliable, RequireOwnership = false)]
     private void SyncRotation_Rpc(Vector3 _mouseView)
     {
         transform.rotation = Quaternion.Euler(_mouseView);

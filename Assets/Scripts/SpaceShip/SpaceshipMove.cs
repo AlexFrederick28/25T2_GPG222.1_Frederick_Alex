@@ -24,8 +24,7 @@ public class SpaceshipMove : NetworkBehaviour
         base.OnNetworkDespawn();
     }
 
-    // this update is used for testing
-    private void FixedUpdate()
+    private void Update()
     {
         if (IsLocalPlayer)
         {
@@ -37,7 +36,7 @@ public class SpaceshipMove : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Unreliable, RequireOwnership = false)]
     private void MoveForward_RPC() // strictly used to move the spaceship forward using forces
     {
         rb.AddRelativeForce(0, 0, speed, ForceMode.Acceleration);

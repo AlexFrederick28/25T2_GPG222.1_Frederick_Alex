@@ -17,7 +17,7 @@ public class MultiplayerLobby : NetworkBehaviour
 
     public Color GetPlayerColour(int colorID)
     {
-        return playerColours[colorID];
+        return playerColours[colorID]; // each player gets and sets their colour through the use of their unique player index
     }
 
     private void OnEnable()
