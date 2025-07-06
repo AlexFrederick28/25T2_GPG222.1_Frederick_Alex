@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 6364150113643862740}
-  speed: 1
+  speed: 2
   colour: {r: 0, g: 0, b: 0, a: 0}
   ownerID: 0
   rocketMesh:
