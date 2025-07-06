@@ -38,7 +38,22 @@ public class LookWithMouse : NetworkBehaviour
         lookActionY.Disable();
     }
 
-    private void FixedUpdate()
+    //private void FixedUpdate()
+    //{
+    //    if (IsLocalPlayer)
+    //    {
+    //        LockMouseToScreen();
+
+    //        if (lookActionX.IsPressed() || lookActionY.IsPressed())
+    //        {
+    //            Debug.Log("Rotating");
+    //            ReadMouseInputs();
+    //            SendControlsToServer_RPC(mouseView);
+    //        }
+    //    }
+    //}
+
+    private void Update()
     {
         if (IsLocalPlayer)
         {

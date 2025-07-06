@@ -9,7 +9,7 @@ public class RocketBehaviour : NetworkBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
     [SerializeField] private Color colour;
-    [SerializeField] private int ownerID;
+    public int ownerID;
     [SerializeField] private List<MeshRenderer> rocketMesh;
     [SerializeField] private Material material;
     [SerializeField] private Collider trigerCollider;
@@ -46,7 +46,7 @@ public class RocketBehaviour : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other) // getting the player ID who spawned the rocket and setting the rockets colour
     {
-        if ( (other.gameObject.GetComponent<PlayerStats>()))
+        if (other.gameObject.GetComponent<PlayerStats>())
         {
             ownerID = other.GetComponent<PlayerStats>().playerIndex;
             ApplyOwnerColour();
