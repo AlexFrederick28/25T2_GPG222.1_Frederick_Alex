@@ -53,4 +53,9 @@ public class RocketBehaviour : NetworkBehaviour
             trigerCollider.enabled = false; // ensures that no other random player takes ownership of the rocket
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }
