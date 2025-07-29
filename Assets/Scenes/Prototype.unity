@@ -2274,7 +2274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PresetAsset: {fileID: 0}
   m_PresetReference:
-    rid: 7599971241420390665
+    rid: 7599971267484057600
   m_Scenario:
     rid: -2
   m_IsScenarioSettingsFolded: 0
@@ -2284,7 +2284,7 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 7599971241420390665
+    - rid: 7599971267484057600
       type: {class: NetworkSimulatorPreset, ns: Unity.Multiplayer.Tools.NetworkSimulator.Runtime, asm: Unity.Multiplayer.Tools.NetworkSimulator.Runtime}
       data:
         <Name>k__BackingField: None
@@ -12680,71 +12680,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143032393}
   m_CullTransparentMesh: 1
---- !u!1001 &2309504220016059092
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4393760026646694816, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: GlobalObjectIdHash
-      value: 1999714026
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393760026646694816, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: InScenePlacedSourceGlobalObjectIdHash
-      value: 2128915047
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -148.53128
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 260.7547
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -293.66992
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290264557417053434, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7955582704949847616, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
-      propertyPath: m_Name
-      value: N_Asteroid_V2_Small
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7bdca63e2a486bc41bbaa08c6f2c8e5d, type: 3}
 --- !u!1001 &7631636167136642491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12827,4 +12762,3 @@ SceneRoots:
   - {fileID: 1381966395}
   - {fileID: 1799975290}
   - {fileID: 1483903577}
-  - {fileID: 2309504220016059092}
