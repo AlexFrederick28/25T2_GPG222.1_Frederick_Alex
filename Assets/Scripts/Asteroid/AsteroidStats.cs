@@ -49,7 +49,7 @@ public class AsteroidStats : NetworkBehaviour
     {
         base.OnNetworkDespawn();
 
-        ServerSplitAsteroid_RPC();
+        RequestSplitAsteroid_RPC();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -63,23 +63,8 @@ public class AsteroidStats : NetworkBehaviour
         }
     }
 
-    //[Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
-    //private void SplitAsteroid_RPC()
-    //{
-    //    if (isStageOne)
-    //    { 
-    //        for (int i = 0; i < maxSplitAmount; i++)
-    //        {
-    //            GameObject newAsteroid = Instantiate(stageTwoAsteroid, transform.position, Quaternion.identity);
-    //            newAsteroid.GetComponent<NetworkObject>().Spawn();
-    //            newAsteroid.GetComponent<AsteroidStats>().ownerID = ownerID;
-    //            newAsteroid.GetComponent<AsteroidStats>().ApplyOwnerColour_RPC();
-    //        }
-    //    }
-    //}
-
-    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
-    private void ServerSplitAsteroid_RPC()
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    private void SplitAsteroid_RPC()
     {
         if (isStageOne)
         {
@@ -91,5 +76,11 @@ public class AsteroidStats : NetworkBehaviour
                 newAsteroid.GetComponent<AsteroidStats>().ApplyOwnerColour_RPC();
             }
         }
+    }
+
+    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    private void RequestSplitAsteroid_RPC()
+    {
+       SplitAsteroid_RPC();
     }
 }
