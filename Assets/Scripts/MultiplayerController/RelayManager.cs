@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Services.Authentication;
@@ -8,15 +9,30 @@ using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RelayManager : MonoBehaviour
 {
     [SerializeField] private int maxConnections = 10;
     [SerializeField] private string connectionType = "udp";
+    [SerializeField] private string joinCode;
+
+    [SerializeField] private TextMeshProUGUI joinCodeText;
+    [SerializeField] private TMP_InputField inputJoinCode;
 
     public async void StartHost()
     {
+        Debug.Log("Starting Host");
         await StartHostWithRelay(maxConnections, connectionType);
+
+        joinCodeText.text = joinCode;
+    }
+
+    public async void StartClient()
+    {
+        joinCode = inputJoinCode.text;
+        Debug.Log("Joining with code: " + joinCode +"space");
+        await StartClientWithRelay(joinCode, connectionType);
     }
 
     public async Task<string> StartHostWithRelay(int maxConnections, string connectionType)
@@ -30,7 +46,7 @@ public class RelayManager : MonoBehaviour
 
         var allocation = await RelayService.Instance.CreateAllocationAsync(maxConnections);
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(AllocationUtils.ToRelayServerData(allocation, connectionType));
-        var joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+        joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
         return NetworkManager.Singleton.StartHost() ? joinCode : null;
     }
 

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class MultiplayerLobby : NetworkBehaviour
 {
-    [SerializeField] private List<GameObject> playersInLobby;
+    public List<GameObject> playersInLobby;
     [SerializeField] private List<Color> playerColours;
 
     public static MultiplayerLobby instance;

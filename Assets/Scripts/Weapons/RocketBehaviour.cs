@@ -22,6 +22,8 @@ public class RocketBehaviour : NetworkBehaviour
     private void Update()
     {
         MoveForward();
+
+        Destroy(gameObject, 15);
     }
 
     private void MoveForward()

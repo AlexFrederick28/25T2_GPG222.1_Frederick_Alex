@@ -4,6 +4,7 @@ using Unity.Netcode;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class LookWithMouse : NetworkBehaviour
@@ -38,21 +39,6 @@ public class LookWithMouse : NetworkBehaviour
         lookActionY.Disable();
     }
 
-    //private void FixedUpdate()
-    //{
-    //    if (IsLocalPlayer)
-    //    {
-    //        LockMouseToScreen();
-
-    //        if (lookActionX.IsPressed() || lookActionY.IsPressed())
-    //        {
-    //            Debug.Log("Rotating");
-    //            ReadMouseInputs();
-    //            SendControlsToServer_RPC(mouseView);
-    //        }
-    //    }
-    //}
-
     private void Update()
     {
         if (IsLocalPlayer)
@@ -76,8 +62,8 @@ public class LookWithMouse : NetworkBehaviour
 
     private void ReadMouseInputs()
     {
-        mouseTurn.x += lookActionX.ReadValue<float>();
-        mouseTurn.y += lookActionY.ReadValue<float>();
+        mouseTurn.x += lookActionX.ReadValue<float>() * sensitivity;
+        mouseTurn.y += lookActionY.ReadValue<float>() * sensitivity;
         //mousePosition = new Vector2(mouseTurn.x, mouseTurn.y); // shows values in inspector
 
         if (transform.up.y < 0)
@@ -98,7 +84,24 @@ public class LookWithMouse : NetworkBehaviour
 
     private void LockMouseToScreen()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if (IsHost)
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            Scene lobbyScene = SceneManager.GetSceneByBuildIndex(1);
+            if (currentScene.buildIndex == lobbyScene.buildIndex)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
 

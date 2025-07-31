@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Rendering.Universal;
+using Unity.Services.Matchmaker.Models;
 
 public class AsteroidStats : NetworkBehaviour
 {
@@ -44,6 +45,13 @@ public class AsteroidStats : NetworkBehaviour
         material.color = color;
     }
 
+    public override void OnNetworkDespawn()
+    {
+        base.OnNetworkDespawn();
+
+        SplitAsteroid_RPC();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<RocketBehaviour>())
@@ -51,7 +59,7 @@ public class AsteroidStats : NetworkBehaviour
             ownerID = collision.gameObject.GetComponent<RocketBehaviour>().ownerID; 
             GetOwnerID_RPC(ownerID);
             ApplyOwnerColour_RPC();
-            SplitAsteroid_RPC();
+            Destroy(gameObject);
         }
     }
 
@@ -67,8 +75,6 @@ public class AsteroidStats : NetworkBehaviour
                 newAsteroid.GetComponent<AsteroidStats>().ownerID = ownerID;
                 newAsteroid.GetComponent<AsteroidStats>().ApplyOwnerColour_RPC();
             }
-
-            Destroy(gameObject);
         }
     }
 }

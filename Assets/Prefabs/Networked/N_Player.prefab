@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: -7062199250190762562}
   - component: {fileID: -1938522303814451803}
   - component: {fileID: 4061978027210919097}
+  - component: {fileID: -3394997198564272550}
   m_Layer: 7
   m_Name: N_Player
   m_TagString: Untagged
@@ -143,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 4263893754169014714}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 250, z: -240}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -303,7 +304,7 @@ MonoBehaviour:
   mousePosition: {x: 0, y: 0, z: 0}
   mouseView: {x: 0, y: 0, z: 0}
   aimCamera: {fileID: 2946081982663053589}
-  sensitivity: 0.1
+  sensitivity: 0.05
   lookActionX:
     m_Name: Look Action X
     m_Type: 0
@@ -452,6 +453,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.8730927}
   m_Center: {x: 0, y: 0, z: 0.43654633}
+--- !u!114 &-3394997198564272550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263893754169014714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4180ccd8a33a7b5488ea7ce9e3426b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  spawnNetworkObject: 1
 --- !u!1 &5883149616126988017
 GameObject:
   m_ObjectHideFlags: 0
