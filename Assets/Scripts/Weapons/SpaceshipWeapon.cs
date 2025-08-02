@@ -3,6 +3,9 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// The weapon used by the spaceship, spawns a projectile using Unity's new input system.
+/// </summary>
 public class SpaceshipWeapon : NetworkBehaviour
 {
     [SerializeField] private Transform gunTransform;

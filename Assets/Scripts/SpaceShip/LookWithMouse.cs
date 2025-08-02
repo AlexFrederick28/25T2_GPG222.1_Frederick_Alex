@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-
+/// <summary>
+/// Rotates the spaceship using mouse coordinates as well as locks the mouse to the screen.
+/// </summary>
 public class LookWithMouse : NetworkBehaviour
 {
     [SerializeField] private Vector2 mouseTurn;
@@ -47,7 +49,6 @@ public class LookWithMouse : NetworkBehaviour
 
             if (lookActionX.IsPressed() || lookActionY.IsPressed())
             {
-                Debug.Log("Rotating");
                 ReadMouseInputs();
                 SendControlsToServer_RPC(mouseView);
             }

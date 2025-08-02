@@ -3,6 +3,9 @@ using Unity.Networking.Transport;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Moves the spaceship forward using forces and Unity's new input system
+/// </summary>
 public class SpaceshipMove : NetworkBehaviour
 {
     [SerializeField] private Rigidbody rb;
@@ -31,7 +34,6 @@ public class SpaceshipMove : NetworkBehaviour
             if (moveAction.IsPressed())
             {
                 RequestMoveForward_RPC();
-                Debug.Log("Moving forward");
             }
         }
     }

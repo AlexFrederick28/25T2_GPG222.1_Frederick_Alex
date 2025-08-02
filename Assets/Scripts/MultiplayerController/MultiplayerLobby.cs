@@ -5,6 +5,9 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Keeps track of players that have joined the host, as well as has colours that players are automatically assigned to.
+/// </summary>
 public class MultiplayerLobby : NetworkBehaviour
 {
     public List<GameObject> playersInLobby;

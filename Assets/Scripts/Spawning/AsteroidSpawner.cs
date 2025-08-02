@@ -1,6 +1,9 @@
 using Unity.Netcode;
 using UnityEngine;
 
+/// <summary>
+/// Spawns asteroids, user can configure the number of spawns and what prefab.
+/// </summary>
 public class AsteroidSpawner : NetworkBehaviour
 {
     [SerializeField] private int number;
@@ -12,11 +15,6 @@ public class AsteroidSpawner : NetworkBehaviour
         if (IsServer)
         {
             Spawn_RPC();
-        }
-        if (IsLocalPlayer)
-        {
-            Spawn_RPC();
-            Debug.Log("spawned");
         }
     }
 

@@ -3,6 +3,9 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Loads scenes for transitioning.
+/// </summary>
 public class SceneLoader : NetworkBehaviour
 {
     [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]

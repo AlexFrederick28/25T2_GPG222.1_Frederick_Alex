@@ -4,6 +4,9 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
+/// <summary>
+/// Adds forces to the projectile object whilst also gathering the player index from the player who spawned/fired it - setting the correct colours.
+/// </summary>
 public class RocketBehaviour : NetworkBehaviour
 {
     [SerializeField] private Rigidbody rb;

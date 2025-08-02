@@ -3,10 +3,13 @@ using Unity.Netcode;
 using UnityEngine.Rendering.Universal;
 using Unity.Services.Matchmaker.Models;
 
+/// <summary>
+/// Gathers the players index from collisions of their projectile, setting the colour as well as splitting the asteroid if possible.
+/// </summary>
 public class AsteroidStats : NetworkBehaviour
 {
     public Color colour;
-    public int ownerID;
+    public NetworkVariable<int> ownerID = new NetworkVariable<int>(0);
     [SerializeField] private Material material;
     [SerializeField] private MeshRenderer mesh;
 
@@ -25,22 +28,35 @@ public class AsteroidStats : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+        ownerID.OnValueChanged += OnOwnerIDChanged;
+    }
+
+    private void OnOwnerIDChanged(int oldValue, int newValue)
+    {
+        ApplyOwnerColour_RPC();
+    }
+
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
     public void ApplyOwnerColour_RPC()
     {
-        SetOwnerColour(MultiplayerLobby.instance.GetPlayerColour(ownerID));
+        SetOwnerColour_RPC(MultiplayerLobby.instance.GetPlayerColour(ownerID.Value));
 
         mesh.material = material;
     }
 
-    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
     private void GetOwnerID_RPC(int ID)
     {
-        Debug.Log("Got Owner ID");
-        ownerID = ID;
+        ownerID.Value = ID;
+        Debug.Log("Got Owner ID: " + ownerID.Value);
     }
 
-    private void SetOwnerColour(Color color)
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
+    private void SetOwnerColour_RPC(Color color)
     {
         material.color = color;
     }
@@ -49,21 +65,27 @@ public class AsteroidStats : NetworkBehaviour
     {
         base.OnNetworkDespawn();
 
-        RequestSplitAsteroid_RPC();
+        if (IsServer)
+        {
+            SplitAsteroid_RPC();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<RocketBehaviour>())
         {
-            ownerID = collision.gameObject.GetComponent<RocketBehaviour>().ownerID; 
-            GetOwnerID_RPC(ownerID);
+            GetOwnerID_RPC(collision.gameObject.GetComponent<RocketBehaviour>().ownerID);
             ApplyOwnerColour_RPC();
-            Destroy(gameObject);
+
+            if (isStageOne)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
-    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
     private void SplitAsteroid_RPC()
     {
         if (isStageOne)
@@ -72,15 +94,9 @@ public class AsteroidStats : NetworkBehaviour
             {
                 GameObject newAsteroid = Instantiate(stageTwoAsteroid, transform.position, Quaternion.identity);
                 newAsteroid.GetComponent<NetworkObject>().Spawn();
-                newAsteroid.GetComponent<AsteroidStats>().ownerID = ownerID;
+                newAsteroid.GetComponent<AsteroidStats>().ownerID.Value = ownerID.Value;
                 newAsteroid.GetComponent<AsteroidStats>().ApplyOwnerColour_RPC();
             }
         }
-    }
-
-    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
-    private void RequestSplitAsteroid_RPC()
-    {
-       SplitAsteroid_RPC();
     }
 }

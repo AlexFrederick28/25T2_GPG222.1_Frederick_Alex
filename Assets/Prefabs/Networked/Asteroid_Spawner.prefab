@@ -87,3 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4180ccd8a33a7b5488ea7ce9e3426b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  dontDestroyOnLoad: 0
+  spawnNetworkObject: 1

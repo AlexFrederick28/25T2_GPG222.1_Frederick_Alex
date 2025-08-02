@@ -2,6 +2,9 @@ using System.Runtime.CompilerServices;
 using Unity.Netcode;
 using UnityEngine;
 
+/// <summary>
+/// Rotates the asteroids model, as well as moves the asteroid using forces 
+/// </summary>
 public class AsteroidMovement : NetworkBehaviour
 {
 
