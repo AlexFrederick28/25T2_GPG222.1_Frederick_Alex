@@ -9,7 +9,7 @@ using Unity.Services.Matchmaker.Models;
 public class AsteroidStats : NetworkBehaviour
 {
     public Color colour;
-    public NetworkVariable<int> ownerID = new NetworkVariable<int>(0);
+    public NetworkVariable<int> ownerID = new NetworkVariable<int>(-1);
     [SerializeField] private Material material;
     [SerializeField] private MeshRenderer mesh;
 
@@ -33,6 +33,8 @@ public class AsteroidStats : NetworkBehaviour
         base.OnNetworkSpawn();
 
         ownerID.OnValueChanged += OnOwnerIDChanged;
+
+        ownerID.Value = -1;
     }
 
     private void OnOwnerIDChanged(int oldValue, int newValue)

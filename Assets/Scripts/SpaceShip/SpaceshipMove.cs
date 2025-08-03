@@ -41,7 +41,7 @@ public class SpaceshipMove : NetworkBehaviour
     [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Unreliable, RequireOwnership = false)]
     private void MoveForward_RPC() // strictly used to move the spaceship forward using forces
     {
-        rb.AddRelativeForce(0, 0, speed, ForceMode.Acceleration);
+        rb.AddRelativeForce(0, 0, speed * Time.deltaTime, ForceMode.Acceleration);
     }
 
     [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]

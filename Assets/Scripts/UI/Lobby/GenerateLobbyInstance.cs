@@ -47,14 +47,14 @@ public class GenerateLobbyInstance : RelayManager
             Debug.Log("Attempting to join server");
             Lobby joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyID);
 
-            QueryLobbiesOptions options = new QueryLobbiesOptions();
-            QueryResponse lobbies = await LobbyService.Instance.QueryLobbiesAsync(options);
-            List<Lobby> foundLobbies = lobbies.Results;
+            //QueryLobbiesOptions options = new QueryLobbiesOptions();
+            //QueryResponse lobbies = await LobbyService.Instance.QueryLobbiesAsync(options);
+            //List<Lobby> foundLobbies = lobbies.Results;
 
-            foreach (Lobby currentLobby in foundLobbies)
-            {
-                Debug.Log(currentLobby.Players.Count.ToString());
-            }
+            //foreach (Lobby currentLobby in foundLobbies)
+            //{
+            //    Debug.Log(currentLobby.Players.Count.ToString());
+            //}
 
             joinCode = joinedLobby.Data["relayJoinCode"].Value;
 

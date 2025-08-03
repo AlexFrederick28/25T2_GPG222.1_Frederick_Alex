@@ -1,7 +1,5 @@
 using System.Threading;
-using TreeEditor;
 using Unity.Netcode;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -88,7 +86,7 @@ public class LookWithMouse : NetworkBehaviour
         if (IsHost || IsLocalPlayer)
         {
             Scene currentScene = SceneManager.GetActiveScene();
-            Scene lobbyScene = SceneManager.GetSceneByBuildIndex(1);
+            Scene lobbyScene = SceneManager.GetSceneByBuildIndex(0);
             if (currentScene.buildIndex == lobbyScene.buildIndex)
             {
                 Cursor.lockState = CursorLockMode.None;

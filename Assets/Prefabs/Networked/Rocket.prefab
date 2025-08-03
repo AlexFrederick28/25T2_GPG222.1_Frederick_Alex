@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 6364150113643862740}
-  speed: 4
+  speed: 300
   colour: {r: 0, g: 0, b: 0, a: 0}
   ownerID: 0
   rocketMesh:
@@ -417,8 +417,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.46905968, y: 0.5103036, z: 2.9193382}
-  m_Center: {x: 0, y: 0, z: -2.270953}
+  m_Size: {x: 0.46905968, y: 0.5103036, z: 0.891489}
+  m_Center: {x: 0, y: 0, z: -1.2570286}
 --- !u!1 &4140869832268059321
 GameObject:
   m_ObjectHideFlags: 0

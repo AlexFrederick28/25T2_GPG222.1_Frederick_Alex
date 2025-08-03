@@ -26,11 +26,6 @@ public class MultiplayerLobby : NetworkBehaviour
     [SerializeField] private GameObject playerNameParent;
     [SerializeField] private ScriptablePrefab playerNamePrefab;
 
-    // allows the player to change their name and display it in the lobby scene
-    //[SerializeField] private TMP_InputField inputPlayerName;
-    //[SerializeField] private TextMeshProUGUI displayPlayerName;
-    //[SerializeField] private string customPlayerName;
-
     public List<GameObject> lobbyNameList;
 
     public Color GetPlayerColour(int colorID)

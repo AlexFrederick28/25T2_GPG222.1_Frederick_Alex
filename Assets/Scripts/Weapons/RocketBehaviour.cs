@@ -31,7 +31,7 @@ public class RocketBehaviour : NetworkBehaviour
 
     private void MoveForward()
     {
-        rb.AddRelativeForce(0, 0, speed, ForceMode.VelocityChange);
+        rb.AddRelativeForce(0, 0, speed * Time.deltaTime, ForceMode.VelocityChange);
     }
 
     private void ApplyOwnerColour()

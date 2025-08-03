@@ -18,7 +18,7 @@ public class AsteroidSpawner : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
     public void Spawn_RPC()
     {
         if (spawnOnStart)

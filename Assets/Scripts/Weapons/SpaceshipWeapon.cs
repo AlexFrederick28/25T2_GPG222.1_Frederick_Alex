@@ -49,7 +49,10 @@ public class SpaceshipWeapon : NetworkBehaviour
     [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
     private void SpawnBullet_RPC()
     {
-        GameObject newRocket = Instantiate(rocketPrefab, gunTransform);
-        newRocket.GetComponent<NetworkObject>().Spawn();
+        if (gameObject.GetComponent<PlayerStats>().collidedWithAsteroid.Value == false)
+        {
+            GameObject newRocket = Instantiate(rocketPrefab, gunTransform);
+            newRocket.GetComponent<NetworkObject>().Spawn();
+        }
     }
 }

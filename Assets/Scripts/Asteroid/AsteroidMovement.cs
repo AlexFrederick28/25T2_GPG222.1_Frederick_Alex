@@ -31,7 +31,7 @@ public class AsteroidMovement : NetworkBehaviour
 
     private void MoveAsteroid()
     {
-        rb.AddRelativeForce(0, 0, moveSpeed, ForceMode.VelocityChange);
+        rb.AddRelativeForce(0, 0, moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
     }
 
     private void RotateAsteroidOnCollision()

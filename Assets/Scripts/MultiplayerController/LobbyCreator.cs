@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
-using Unity.Android.Gradle.Manifest;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Unity.VisualScripting;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class LobbyCreator : RelayManager
@@ -153,7 +151,6 @@ public class LobbyCreator : RelayManager
                 GameObject newLobbyDisplay = Instantiate(lobbyDisplay.displayObjectPrefab);
                 GenerateLobbyInstance.GenerateNewLobbyDisplayInstance.Invoke(currentLobby.Name, currentLobby.Players.Count.ToString(), currentLobby.MaxPlayers.ToString(), currentLobby.Id);
                 newLobbyDisplay.transform.SetParent(lobbyDisplayParent.transform);
-
             }
         }
         catch (LobbyServiceException e)

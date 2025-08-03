@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
@@ -14,6 +15,7 @@ public class PlayerStats : NetworkBehaviour
 {
     public int playerIndex;
     [SerializeField] private MeshRenderer pilotMeshRenderer;
+    [SerializeField] private MeshRenderer[] spaceshipObjects;
     
     private Material material;
 
@@ -24,6 +26,11 @@ public class PlayerStats : NetworkBehaviour
     public string clientName;
     public TextMeshProUGUI displayNameText;
     public TextMeshProUGUI inputNameText;
+
+    public NetworkVariable<bool> collidedWithAsteroid = new NetworkVariable<bool>();
+
+    [SerializeField] private TextMeshPro playerNameTag;
+    [SerializeField] private GameObject deadText;
 
     public override void OnNetworkSpawn()
     {
@@ -53,17 +60,18 @@ public class PlayerStats : NetworkBehaviour
         MultiplayerLobby.playerLeave.Invoke(gameObject);
     }
 
-    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
-    public void SubmitNewNameServer_RPC()
-    {
-        Debug.Log("Input name: " + inputNameText.text);
+    //[Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable, RequireOwnership = false)] // Thsi was used for buttons to update player name -- Instead the names are updated with OnValueChanged event
+    //public void SubmitNewNameServer_RPC()
+    //{
+    //    if (IsServer)
+    //    {
+    //        Debug.Log("Input name: " + inputNameText.text);
+    //        nameText.Value = inputNameText.text;
+    //        Debug.Log("New name: " + nameText.Value);
+    //    }
+    //}
 
-        nameText.Value = inputNameText.text;
-
-        Debug.Log("New name: " + nameText.Value);
-    }
-
-    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
     private void OnNameChanged_RPC(FixedString32Bytes oldName, FixedString32Bytes newName)
     {
         if (displayNameText != null)
@@ -73,11 +81,15 @@ public class PlayerStats : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = true)]
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
     public void ChangeNameServer_RPC(string newName)
     {
-        nameText.Value = newName;
+        if (IsServer)
+        {
+            nameText.Value = newName;
+        }
 
+        playerNameTag.text = newName;
         gameObject.name = newName;
     }
 
@@ -98,34 +110,81 @@ public class PlayerStats : NetworkBehaviour
         material.color = color;
     }
 
+    private bool updateName = false;
+
+    public void UpdateNameInput()
+    {
+        if (IsOwner) // TODO: fix it so that it doesnt update per frame smh
+        {
+            if (clientName != inputNameText.text)
+            {
+                updateName = true;
+                clientName = inputNameText.text;
+            }
+            else if (clientName == inputNameText.text && updateName == true)
+            {
+                Debug.Log("Updated Name");
+                SendClientNameToServer_RPC(clientName);
+
+                updateName = false;
+            }
+        }
+    }
+
     private void Update()
     {
         SetPlayerSpawnPosition();
 
-        if (IsOwner)
-        {
-            if (clientName != inputNameText.text)
-            {
-                clientName = inputNameText.text;
-            }
-            else
-            {
-                SendClientNameToServer_RPC(clientName);
-            }
-        }
+        UpdateNameInput();
 
+        if (collidedWithAsteroid.Value == true && IsOwner)
+        {
+            deadText.SetActive(true);
+        }
     }
 
     private void SetPlayerSpawnPosition()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        Scene gameScene = SceneManager.GetSceneByBuildIndex(2);
+        Scene gameScene = SceneManager.GetSceneByBuildIndex(1);
 
         if (currentScene == gameScene && isInSpawnPosition == false)
         {
             PlayerPositioning.SetSpawnPositionEvent.Invoke(gameObject);
 
             isInSpawnPosition = true;
+        }
+    }
+
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable, RequireOwnership = false)]
+    public void PlayerDeath_RPC(int _playerIndex)
+    {
+        if (_playerIndex != playerIndex)
+        {
+            Debug.Log("Dead");
+
+            foreach (MeshRenderer renderer in spaceshipObjects)
+            {
+                renderer.enabled = false;
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided");
+
+        if (collision.gameObject.GetComponent<AsteroidStats>() != null)
+        {
+            AsteroidStats stats = collision.gameObject.GetComponent<AsteroidStats>();
+            Debug.Log("Collided with Asteroid");
+
+            if (collision.gameObject.GetComponent<AsteroidStats>().ownerID.Value != playerIndex)
+            {
+                collidedWithAsteroid.Value = true;
+            }
+
+            PlayerDeath_RPC(stats.ownerID.Value);
         }
     }
 }

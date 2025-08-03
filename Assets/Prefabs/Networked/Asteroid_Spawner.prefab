@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  number: 20
+  number: 40
   spawnOnStart: 1
   prefab: {fileID: 5652556495157004939, guid: 79a204aa478970645a70a612cc6a4945, type: 3}
 --- !u!114 &-58532525888535211
@@ -87,6 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4180ccd8a33a7b5488ea7ce9e3426b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   dontDestroyOnLoad: 0
   spawnNetworkObject: 1
+  destroyObjectWithScene: 1
