@@ -85,7 +85,7 @@ public class LookWithMouse : NetworkBehaviour
 
     private void LockMouseToScreen()
     {
-        if (IsHost)
+        if (IsHost || IsLocalPlayer)
         {
             Scene currentScene = SceneManager.GetActiveScene();
             Scene lobbyScene = SceneManager.GetSceneByBuildIndex(1);
@@ -97,7 +97,6 @@ public class LookWithMouse : NetworkBehaviour
             {
                 Cursor.lockState = CursorLockMode.Locked;
             }
-
         }
         else
         {

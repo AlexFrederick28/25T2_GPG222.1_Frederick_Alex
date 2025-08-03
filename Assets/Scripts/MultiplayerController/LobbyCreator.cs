@@ -15,10 +15,6 @@ public class LobbyCreator : RelayManager
     [SerializeField] private string lobbyName = "new lobby";
     CreateLobbyOptions options = new CreateLobbyOptions();
     [SerializeField] private string lobbyID;
-    [SerializeField] private string customPlayerName;
-
-    [SerializeField] private TMP_InputField inputPlayerName;
-    [SerializeField] private TextMeshProUGUI displayPlayerName;
 
     [SerializeField] private GameObject lobbyDisplayParent;
     [SerializeField] private ScriptablePrefab lobbyDisplayPrefab;
@@ -163,16 +159,6 @@ public class LobbyCreator : RelayManager
         catch (LobbyServiceException e)
         {
             Debug.Log(e);
-        }
-    }
-
-    public void ChangePlayerName()
-    {
-        customPlayerName = inputPlayerName.text;
-
-        if (displayPlayerName != null)
-        {
-            displayPlayerName.text = customPlayerName;
         }
     }
 }

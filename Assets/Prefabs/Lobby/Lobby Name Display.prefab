@@ -89,9 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3aad3585a38db14e937b794439377e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobbyID: 
-  playerNameParent: {fileID: 0}
-  playerNamePrefab: {fileID: 11400000, guid: 03ff734e46c157c40b76585835d88b41, type: 2}
+  playerNameUI: {fileID: 9049857630514369848}
+  namePlateOwner: {fileID: 0}
 --- !u!1 &5752966991154869997
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +103,7 @@ GameObject:
   - component: {fileID: 5139006927105204107}
   - component: {fileID: 9049857630514369848}
   m_Layer: 5
-  m_Name: Lobby Name
+  m_Name: Player Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
